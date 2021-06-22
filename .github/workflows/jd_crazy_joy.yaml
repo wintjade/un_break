@@ -41,3 +41,9 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
           JDJOY_HELPSELF: ${{ secrets.JDJOY_HELPSELF || github.event.client_payload.JDJOY_HELPSELF }}
           JDJOY_APPLYJDBEAN: ${{ secrets.JDJOY_APPLYJDBEAN || github.event.client_payload.JDJOY_APPLYJDBEAN }}
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1

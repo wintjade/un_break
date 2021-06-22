@@ -41,3 +41,9 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
           JD_CASH_SHARECODES: ${{ secrets.JD_CASH_SHARECODES || github.event.client_payload.JD_CASH_SHARECODES }}
           CASH_EXCHANGE: ${{ secrets.CASH_EXCHANGE || github.event.client_payload.CASH_EXCHANGE }}
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1

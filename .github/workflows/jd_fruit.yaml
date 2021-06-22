@@ -42,3 +42,9 @@ jobs:
           FRUITSHARECODES: ${{ secrets.FruitShareCodes || github.event.client_payload.FruitShareCodes }}
           FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD || github.event.client_payload.FRUIT_BEAN_CARD }}
           FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL || github.event.client_payload.FRUIT_NOTIFY_CONTROL }}
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1

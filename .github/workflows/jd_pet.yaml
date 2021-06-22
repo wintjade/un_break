@@ -41,3 +41,9 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
           PETSHARECODES: ${{ secrets.PETSHARECODES || github.event.client_payload.PETSHARECODES }}
           PET_NOTIFY_CONTROL: ${{ secrets.PET_NOTIFY_CONTROL || github.event.client_payload.PET_NOTIFY_CONTROL }}
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1

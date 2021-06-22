@@ -41,3 +41,9 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
           JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT || github.event.client_payload.JOY_FEED_COUNT }}
           JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG || github.event.client_payload.JOY_RUN_FLAG }}
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1
