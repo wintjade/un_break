@@ -3,7 +3,7 @@
 * @ScriptName        领现金兑换红包
 * @Author            Cuttlefish
 * @TgChannel         https://t.me/ddgksf2021
-* @WechatID          公众号墨鱼手记
+* @WechatID          墨鱼手记
 * @UpdateTime        20210309
 * @ScriptFunction    红包的有效期只有3天（72小时）
 * @UpdateLog         0311 [:] 更换个人信息查询的API接口
