@@ -1,4 +1,4 @@
-name: jd_joy
+name: jd_joy_new
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: jd_joy
+    types: jd_joy_new
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
           npm install
       - name: '运行 【宠汪汪】'
         run: |
-          node ./src/jd_joy.js
+          node ./src/jd_joy_new.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
