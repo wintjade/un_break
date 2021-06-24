@@ -3,7 +3,7 @@ name: jd_joy_new
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 */2 * * *'
+    - cron: '15 */1 * * *'
   watch:
     types: started
   repository_dispatch:
