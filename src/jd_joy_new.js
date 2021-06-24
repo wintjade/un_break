@@ -218,7 +218,7 @@ const DATA = {
   "lang": "zh_CN",
 };
 // const SERVER = 'iv.jd.com';
-const SERVER = '61.49.99.122';
+const SERVER = '49.7.27.91';
 
 class JDJRValidator {
   constructor() {
