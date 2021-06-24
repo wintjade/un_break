@@ -3,7 +3,7 @@ name: jd_dreamFactory2
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 0,13 * * *'
+    - cron: '10 23,5,13 * * *'
   watch:
     types: started
   repository_dispatch:
