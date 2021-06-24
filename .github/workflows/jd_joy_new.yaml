@@ -30,7 +30,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【宠汪汪二代目】'
+      - name: '运行 【宠汪汪】'
         run: |
           node ./src/jd_joy_new.js
         env:
