@@ -217,8 +217,7 @@ const DATA = {
   "product": "embed",
   "lang": "zh_CN",
 };
-// const SERVER = 'iv.jd.com';
-const SERVER = '49.7.27.91';
+const SERVER = '61.49.99.122';
 
 class JDJRValidator {
   constructor() {
@@ -703,7 +702,7 @@ function doTask(body, fnId = 'scan') {
 }
 
 function feed() {
-  feedNum = process.env.feedNum ? process.env.feedNum : 20
+  feedNum = process.env.feedNum ? process.env.feedNum : 80
   return new Promise(resolve => {
     $.post({
       url: `https://jdjoy.jd.com/common/pet/enterRoom/h5?invitePin=&reqSource=h5&invokeKey=NRp8OPxZMFXmGkaE`,
