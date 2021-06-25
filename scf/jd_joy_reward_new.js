@@ -217,8 +217,7 @@ const DATA = {
   "product": "embed",
   "lang": "zh_CN",
 };
-// const SERVER = 'iv.jd.com';
-const SERVER = '49.7.27.91';
+const SERVER = '61.49.99.122';
 
 class JDJRValidator {
   constructor() {
