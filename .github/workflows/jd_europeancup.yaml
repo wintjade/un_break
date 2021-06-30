@@ -3,7 +3,7 @@ name: jd_europeancup
 on:
   workflow_dispatch:
   schedule:
-    - cron: '59 1,13 * * *'
+    - cron: '59 1 * * *'
   watch:
     types: started
   repository_dispatch:
