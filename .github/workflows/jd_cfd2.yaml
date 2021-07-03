@@ -39,6 +39,7 @@ jobs:
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT || github.event.client_payload.JD_USER_AGENT }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN || github.event.client_payload.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
+          JDCFD_SHARECODES: ${{ secrets.JDCFD_SHARECODES || github.event.client_payload.JDCFD_SHARECODES }}
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main

@@ -1,13 +1,13 @@
-name: jd_europeancup
+name: jd_lsj
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '59 1,5 * * *'
+    - cron: '50 17,13 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_europeancup
+    types: jd_lsj
 
 jobs:
   build:
@@ -30,9 +30,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【狂欢欧洲杯】'
+      - name: '运行 【京东零食街】'
         run: |
-          node ./src/jd_europeancup.js
+          node ./src/jd_lsj.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
