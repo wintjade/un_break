@@ -3,7 +3,7 @@ name: jd_joy-park
 on:
   workflow_dispatch:
   schedule:
-    - cron: '13 */1 * * *'
+    - cron: '*/50 * * * *'
   watch:
     types: started
   repository_dispatch:
