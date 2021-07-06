@@ -30,7 +30,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【旺财乐园】'
+      - name: '运行 【汪汪乐园】'
         run: |
           node ./src/jd_joy-park.js
         env:
