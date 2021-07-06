@@ -20,7 +20,6 @@ const zlib = require('zlib');
 const vm = require('vm');
 const PNG = require('png-js');
 const UA = require('./USER_AGENTS.js').USER_AGENT;
-const fetch = require('node-fetch');
 const fs = require("fs");
 
 
@@ -753,7 +752,7 @@ function doTask(body, fnId = 'scan') {
 }
 
 function feed() {
-  feedNum = process.env.feedNum ? process.env.feedNum : 20
+  feedNum = process.env.feedNum ? process.env.feedNum : 40
   return new Promise(resolve => {
     $.post({
       url: `https://jdjoy.jd.com/common/pet/enterRoom/h5?invitePin=&reqSource=h5&invokeKey=NRp8OPxZMFXmGkaE`,
@@ -869,8 +868,10 @@ function run(fn = 'match') {
           } else if (race === 'unreceive') {
             console.log('开始领奖')
             await run('receive')
+          } else if (race === 'time_over') {
+            console.log('不在比赛时间')
           } else {
-            console.log('这是什么！')
+            console.log('这是什么！', data)
           }
         }
       } catch (e) {
