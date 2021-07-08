@@ -1,4 +1,4 @@
-name: jd_sign
+name: jd_sign_graphics
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: jd_sign
+    types: jd_sign_graphics
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
           npm install
       - name: '运行 【京东签到图形验证】'
         run: |
-          node ./src/jd_sign.js
+          node ./src/jd_sign_graphics.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
