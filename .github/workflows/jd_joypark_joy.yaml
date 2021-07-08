@@ -1,13 +1,13 @@
-name: jd_joy-park
+name: jd_joypark_joy
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '3 22,0-23/3 * * *'
+    - cron: '23 0-23/3 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_joy-park
+    types: jd_joypark_joy
 
 jobs:
   build:
@@ -30,9 +30,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【汪汪乐园】'
+      - name: '运行 【汪汪乐园养joy】'
         run: |
-          node ./src/jd_joy-park.js
+          node ./src/jd_joypark_joy.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}

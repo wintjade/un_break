@@ -3,7 +3,7 @@ name: jd_joypark_task
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 23,12 * * *'
+    - cron: '13 23,9,12 * * *'
   watch:
     types: started
   repository_dispatch:
