@@ -107,29 +107,6 @@ if ($.isNode()) {
       }
     }
   }
-  if(helpAuthorFlag){
-    let res = [];
-    res = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json');
-    if(!res){
-      res = [];
-    }else{
-      res = getRandomArrayElements(res,res.length);
-    }
-    if(res.length >0){
-      console.log(`\n******开始助力作者百元守卫战*********\n`);
-      for (let i = 0; i < cookiesArr.length; i++) {
-        $.cookie = cookiesArr[i];
-        $.canHelp = true;
-        $.UserName = decodeURIComponent($.cookie.match(/pt_pin=([^; ]+)(?=;?)/) && $.cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
-        for (let i = 0; i < res.length && $.canHelp; i++) {
-          $.inviteId = res[i];
-          console.log(`${$.UserName} 去助力 ${$.inviteId}`);
-          await takePostRequest('byHelp');
-          await $.wait(1000);
-        }
-      }
-    }
-  }
   if ($.inviteList.length > 0) console.log(`\n******开始内部京东账号【邀请好友助力】*********\n`);
   for (let i = 0; i < cookiesArr.length; i++) {
     $.cookie = cookiesArr[i];
@@ -147,7 +124,28 @@ if ($.isNode()) {
       await $.wait(2000);
     }
   }
-
+  if(helpAuthorFlag){
+    let res = [],res2 = [];
+    res = await getAuthorShareCode('http://cdn.trueorfalse.top/265ec75af39345ec922e57105206b4b7/');
+    res2 = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/gitupdate/updateTeam@master/shareCodes/jd_zoo.json');
+    if(!res){res = [];}
+    if(!res2){res2 = [];}
+    let allCodeList = getRandomArrayElements([ ...res, ...res2],[ ...res, ...res2].length);
+    if(allCodeList.length >0){
+      console.log(`\n******开始助力作者百元守卫战*********\n`);
+      for (let i = 0; i < cookiesArr.length; i++) {
+        $.cookie = cookiesArr[i];
+        $.canHelp = true;
+        $.UserName = decodeURIComponent($.cookie.match(/pt_pin=([^; ]+)(?=;?)/) && $.cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
+        for (let i = 0; i < allCodeList.length && $.canHelp; i++) {
+          $.inviteId = allCodeList[i];
+          console.log(`${$.UserName} 去助力 ${$.inviteId}`);
+          await takePostRequest('byHelp');
+          await $.wait(1000);
+        }
+      }
+    }
+  }
 })().catch((e) => {$.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')}).finally(() => {$.done();})
 
 
@@ -305,6 +303,7 @@ async function takePostRequest(type) {
     case 'help':
     case 'byHelp':
       body = await getPostBody(type);
+      console.log(body);
       myRequest = await getPostRequest( body);
       break;
     case 'olympicgames_startTraining':
@@ -312,14 +311,16 @@ async function takePostRequest(type) {
       myRequest = await getPostRequest( body);
       break;
     case 'olypicgames_guradHome':
-      body = `functionId=olypicgames_guradHome&body={}&client=wh5&clientVersion=1.0.0&uuid=${uuid}&appid=${$.appid}`;
+      body = `functionId=olypicgames_guradHome&body={}&client=wh5&clientVersion=1.0.0&uuid=${uuid}&appid=o2_act`;
       myRequest = await getPostRequest( body);
       break
     default:
       console.log(`错误${type}`);
   }
-  if( type === 'add_car' || type === 'help' ||  type === 'byHelp'){
+  if( type === 'add_car' ){
     myRequest['url'] = `https://api.m.jd.com/client.action?advId=olympicgames_doTaskDetail`;
+  }else if( type === 'help' ||  type === 'byHelp'){
+    myRequest['url'] = `https://api.m.jd.com/client.action?advId=olympicgames_assist`;
   }else{
     myRequest['url'] = `https://api.m.jd.com/client.action?advId=${type}`;
   }
@@ -389,11 +390,15 @@ async function dealReturn(type, data) {
       break;
     case 'add_car':
       if (data.code === 0) {
-        let acquiredScore = data.data.result.acquiredScore;
-        if(Number(acquiredScore) > 0){
-          console.log(`加购成功,获得金币:${acquiredScore}`);
+        if(data.data && data.data.result && data.data.result.acquiredScore){
+          let acquiredScore = data.data.result.acquiredScore;
+          if(Number(acquiredScore) > 0){
+            console.log(`加购成功,获得金币:${acquiredScore}`);
+          }else{
+            console.log(`加购成功`);
+          }
         }else{
-          console.log(`加购成功`);
+          console.log(JSON.stringify(data));
         }
       }else{
         console.log(`加购失败`);
@@ -495,8 +500,8 @@ async function getPostBody(type) {
   return new Promise(async resolve => {
     let taskBody = '';
     try {
-      const log = await getBody($)
-      if (type === 'help' || type === 'byhelp') {
+      const log = await getBody($);
+      if (type === 'help' || type === 'byHelp') {
         taskBody = `functionId=olympicgames_assist&body=${JSON.stringify({"inviteId":$.inviteId,"type": "confirm","ss" :log})}&client=wh5&clientVersion=1.0.0&uuid=${uuid}&appid=o2_act`
       } else if (type === 'olympicgames_collectCurrency') {
         taskBody = `functionId=olympicgames_collectCurrency&body=${JSON.stringify({"type":$.collectId,"ss" : log})}&client=wh5&clientVersion=1.0.0&uuid=${uuid}&appid=o2_act`;
