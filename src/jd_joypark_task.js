@@ -25,11 +25,11 @@ if ($.isNode()) {
 }
 
 // 汪汪乐园 助力作者2个号，放心一般都是满的，爱护作者，人人有责
-$.invitePinTaskList = ['W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es','cQoPKkkid0zr22o7Oej5yO0IMMy8J5ssaaGBRxTyspo']
+$.invitePinTaskList = ['','']
 
 const JD_API_HOST = `https://api.m.jd.com/client.action`;
 message = ""
-$.shareuuid = "W2j9nfW7Jzo5M5HApothz_CpgfyjcIG11hM6fOtM3es" //wen总的助力码
+$.shareuuid = "" //wen总的助力码
 !(async () => {
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/', {
