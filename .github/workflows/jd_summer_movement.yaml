@@ -3,7 +3,7 @@ name: jd_summer_movement
 on:
   workflow_dispatch:
   schedule:
-    - cron: '14 22,0-16/3 * * *'
+    - cron: '14 0-23/3 * * *'
   watch:
     types: started
   repository_dispatch:
