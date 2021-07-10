@@ -81,7 +81,15 @@ if ($.isNode()) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;
   }
-  nods(process.cwd());
+
+  console.log(`注意：若执行失败，则请进入环境手动删除“app.5c2472d1.js”文件，然后重新执行脚本`);
+  console.log(`若找不到“app.5c2472d1.js”文件，则删除“app”开头的解密文件`);
+  // try{
+  //   nods(process.cwd());
+  // }catch (e) {
+  //
+  // }
+
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       $.cookie = cookiesArr[i];
@@ -149,7 +157,11 @@ if ($.isNode()) {
       }
     }
   }
-  nods(process.cwd());
+  // try{
+  //   nods(process.cwd());
+  // }catch (e) {
+  //
+  // }
 })().catch((e) => {$.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')}).finally(() => {$.done();})
 
 
@@ -692,7 +704,7 @@ function nods(dir) {
       console.log("给定的路径不存在，请给出正确的路径");
     }
   } catch (e) {
-    console.error(e)
+    console.log(e)
   }
 }
 // prettier-ignore
