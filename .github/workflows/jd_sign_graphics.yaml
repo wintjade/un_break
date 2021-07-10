@@ -3,7 +3,7 @@ name: jd_sign_graphics
 on:
   workflow_dispatch:
   schedule:
-    - cron: '20 16 * * *'
+    - cron: '20 22 * * *'
   watch:
     types: started
   repository_dispatch:
