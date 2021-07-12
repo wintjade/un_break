@@ -85,7 +85,7 @@ async function jdPigPet() {
     await pigPetLottery();
     await pigPetMissionList();
     await missions();
-    await pigPetUserBag();
+    //await pigPetUserBag();
   } catch (e) {
     $.logErr(e)
   }
