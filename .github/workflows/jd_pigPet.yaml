@@ -1,13 +1,13 @@
-name: jr_task_pigPet
+name: jd_pigPet
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '13 0-23/6 * * *'
+    - cron: '3 0-23/6 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jr_task_pigPet
+    types: jd_pigPet
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
           npm install
       - name: '运行 【京东金融养猪猪】'
         run: |
-          node ./src/jr_task_pigPet.js
+          node ./src/jd_pigPet.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
