@@ -3,7 +3,7 @@ name: jd_live
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5 */4 * * *'
+    - cron: '11 0-23/4 * * *'
   watch:
     types: started
   repository_dispatch:

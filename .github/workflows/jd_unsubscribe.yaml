@@ -3,7 +3,7 @@ name: jd_unsubscribe
 on:
   workflow_dispatch:
   schedule:
-    - cron: '3 */1 * * *'
+    - cron: '31 0-23/1 * * *'
   watch:
     types: started
   repository_dispatch:

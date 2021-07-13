@@ -3,7 +3,7 @@ name: jd_wish
 on:
   workflow_dispatch:
   schedule:
-    - cron: '3 0,4 * * *'
+    - cron: '9 0,4 * * *'
   watch:
     types: started
   repository_dispatch:
