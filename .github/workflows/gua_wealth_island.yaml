@@ -1,4 +1,4 @@
-name: jd_cfd2
+name: gua_wealth_island
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: jd_cfd2
+    types: gua_wealth_island
 
 jobs:
   build:
@@ -30,9 +30,9 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京喜财富岛】'
+      - name: '运行 【财富大陆】'
         run: |
-          node ./src/jd_cfd2.js
+          node ./src/gua_wealth_island.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
